@@ -11,7 +11,7 @@ use SymfonyApiBase\DependencyInjection\SymfonyApiBaseExtension;
  *
  * @author Ivan Parfentev
  */
-class SymfonyApiBaseBundle extends AbstractBundle
+final class SymfonyApiBaseBundle extends AbstractBundle
 {
     public function getPath(): string
     {

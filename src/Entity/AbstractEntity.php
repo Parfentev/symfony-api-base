@@ -10,7 +10,7 @@ use SymfonyApiBase\Service\EntitiesService;
 use SymfonyApiBase\Util\StringUtil;
 
 #[ORM\HasLifecycleCallbacks]
-class AbstractEntity implements EntityInterface
+abstract class AbstractEntity implements EntityInterface
 {
     #[EntityProperty(hide: true, guard: true)]
     protected EntitiesService $entitiesService;

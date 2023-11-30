@@ -4,7 +4,7 @@ namespace SymfonyApiBase\Service;
 
 use SymfonyApiBase\Exception\ForbiddenException;
 
-class AuthService
+final class AuthService
 {
     private static ?int    $userId = null;
     private static ?string $token = null;

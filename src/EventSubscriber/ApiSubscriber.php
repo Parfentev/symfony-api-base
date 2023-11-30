@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 #[AsEventListener(event: KernelEvents::EXCEPTION, method: 'onApiException')]
-class ApiSubscriber
+final class ApiSubscriber
 {
     public function onApiException(ExceptionEvent $event): void
     {

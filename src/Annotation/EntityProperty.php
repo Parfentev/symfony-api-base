@@ -5,7 +5,7 @@ namespace SymfonyApiBase\Annotation;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class EntityProperty
+final class EntityProperty
 {
     private bool $isHidden;
     private bool $isGuarded;

@@ -7,7 +7,7 @@ use ReflectionClass;
 use ReflectionProperty;
 use SymfonyApiBase\Annotation\EntityProperty;
 
-class EntitiesService
+final class EntitiesService
 {
     private array $properties = [];
     private array $guarded    = [];
