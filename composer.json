@@ -3,6 +3,16 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "description": "",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Parfentev/symfony-api-base"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org/packages/parfentev/symfony-api-base-bundle"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "symfony/framework-bundle": "^6.1",
