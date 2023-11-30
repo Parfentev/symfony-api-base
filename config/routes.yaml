@@ -1,0 +1,5 @@
+api_base_controllers:
+    resource:
+        path: '../src/Controller/'
+        namespace: 'SymfonyApiBase\Controller'
+    type: attribute
