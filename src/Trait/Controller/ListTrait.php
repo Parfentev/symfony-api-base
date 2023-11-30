@@ -5,7 +5,7 @@ namespace SymfonyApiBase\Trait\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use SymfonyApiBase\Controller\V1\AbstractController;
+use SymfonyApiBase\Controller\AbstractController;
 
 /**
  * Добавляет rout получения списков GET ".../{controller}"

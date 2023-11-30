@@ -1,13 +1,13 @@
 <?php
 
-namespace SymfonyApiBase\Controller\V1;
+namespace SymfonyApiBase\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use SymfonyApiBase\Entity\EntityInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use SymfonyApiBase\Entity\EntityInterface;
 
 abstract class AbstractController extends SymfonyController
 {
