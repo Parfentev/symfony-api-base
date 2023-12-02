@@ -15,7 +15,7 @@ final class SymfonyApiBaseBundle extends AbstractBundle
 {
     public function getPath(): string
     {
-        return __DIR__;
+        return dirname(__DIR__);
     }
 
     public function getContainerExtension(): ?ExtensionInterface

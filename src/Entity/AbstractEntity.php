@@ -4,26 +4,18 @@ namespace SymfonyApiBase\Entity;
 
 use BadMethodCallException;
 use DateTime;
-use Doctrine\ORM\Mapping as ORM;
 use SymfonyApiBase\Annotation\EntityProperty;
 use SymfonyApiBase\Service\EntitiesService;
 use SymfonyApiBase\Util\StringUtil;
 
-#[ORM\HasLifecycleCallbacks]
-abstract class AbstractEntity implements EntityInterface
+class AbstractEntity implements EntityInterface
 {
     #[EntityProperty(hide: true, guard: true)]
     protected EntitiesService $entitiesService;
 
-    public function __construct()
+    protected function getService(): EntitiesService
     {
-        $this->init();
-    }
-
-    #[ORM\PostLoad]
-    public function init(): void
-    {
-        $this->entitiesService = new EntitiesService($this::class);
+        return $this->entitiesService ?? $this->entitiesService = new EntitiesService($this::class);
     }
 
     /**
@@ -38,7 +30,7 @@ abstract class AbstractEntity implements EntityInterface
         $item = [];
 
         if (!$fields || $fields === ['all']) {
-            $fields = $this->entitiesService->getAllowedFields();
+            $fields = $this->getService()->getAllowedFields();
         }
 
         foreach ($fields as $field) {
@@ -93,9 +85,9 @@ abstract class AbstractEntity implements EntityInterface
 
         $columnName = lcfirst(substr($name, 3));
         if (property_exists($this, $columnName)) {
-             if ($isGetter) {
-                 return $this->getter($columnName);
-             }
+            if ($isGetter) {
+                return $this->getter($columnName);
+            }
 
             if ($isSetter) {
                 $this->setter($columnName, $params);
@@ -115,7 +107,7 @@ abstract class AbstractEntity implements EntityInterface
      */
     private function getter($columnName): mixed
     {
-        $columnType = $this->entitiesService->getPropertyType($columnName);
+        $columnType = $this->getService()->getPropertyType($columnName);
 
         if ($columnType === 'DateTime') {
             return $this->{$columnName}->getTimestamp();
@@ -134,11 +126,11 @@ abstract class AbstractEntity implements EntityInterface
      */
     private function setter($columnName, $params): void
     {
-        $columnType = $this->entitiesService->getPropertyType($columnName);
+        $columnType = $this->getService()->getPropertyType($columnName);
         //$this->{$columnName} = $this->applyType($columnName, $params[0]);
 
         // Нельзя заполнять поле
-        if (in_array($columnName, $this->entitiesService->getGuarded())) {
+        if (in_array($columnName, $this->getService()->getGuarded())) {
             return;
         }
 
